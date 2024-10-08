@@ -1,4 +1,5 @@
 let balance = 0;
+let monto = 0;
 let encendido = true; //booleano para empezar y finalizar el bucle while
 let opciones = "\n1-Balance\n2-Retirar dinero\n3-Depositar dinero\n4-terminar";
 let inicio = "Bienvenido a tu deposito de dinero. Aqui puedes:\n1-Mirar balance\n2-Retirar dinero\n3-Depositar dinero\n Elige la opcion numerica deseada.";
@@ -12,13 +13,13 @@ while(encendido == true)
             lista();
             break;
         case "2":
-            let resta = prompt("Introduce el monto a retirar");
-            retiro(resta);
+            monto = prompt("Introduce el monto a retirar");
+            transaccion(presentacion,monto);
             lista();
             break;
         case "3":
-            let suma = prompt("Introduce el monto a depositar");
-            deposito(suma);
+            monto = prompt("Introduce el monto a depositar");
+            transaccion(presentacion,monto);
             lista();
             break;
         default:
@@ -27,19 +28,32 @@ while(encendido == true)
             break;
     }
 }
-function retiro(resta) 
+function transaccion(orden,monto) 
 {
-    parseInt(resta)
-    if(isNaN(resta) == true)
-        {
-            alert("Ingreso erroneo");
-        }
-        else
-        {
-            parseInt(balance);
-            balance -= resta;
-            alert("tu retiro ha sido realizado con exito, ahora tu balance es de " + balance);
-        } 
+    parseInt(monto)
+    if(monto == null || parseInt(monto)< 0)
+    {
+        alert("Favor de ingresar un monto mayor a 0");
+    }
+    else if (isNaN(monto) == true)
+    {
+        alert("Ingreso erroneo");
+    }
+    else if (orden == "2" && parseInt(monto) > balance ) {
+        alert("Tu cuenta no tiene suficiente dinero para realizar el retiro correspondiente.");
+    }
+    else if(isNaN(monto) == false && orden == "2")
+    {
+        console.log(typeof(monto))
+        balance -= monto;
+        alert("tu retiro ha sido realizado con exito, ahora tu balance es de " + balance);
+    }
+    else if(isNaN(monto) == false && orden == "3")
+    {
+        console.log(typeof(monto))
+        balance += parseInt(monto);
+        alert("tu deposito ha sido realizado con exito, ahora tu balance es de " + balance);
+    }
 }
 function deposito(suma) 
 {
