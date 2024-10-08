@@ -28,7 +28,7 @@ while(encendido == true)//Bucle que mantiene al usuario con las opciones disponi
             break;
     }
 }
-function transaccion(orden,monto) //funcion principal para el control de la variable balance y revision de la entrada del usuario.
+function transaccion(orden,monto) //funcion principal para el control de la variable balance y revision de la entrada del usuario
 {
     parseInt(monto)
     if(monto == null || parseInt(monto)< 0)//Si la entrada del usuario(monto) esta vacia o es negativa.
